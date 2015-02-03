@@ -10,6 +10,7 @@
 	if (!$link) {
 	die('Could not connect: ' . mysql_error());
 	}
+	echo "<br>";
 	echo 'Connected successfully';
 	mysql_close($link); ?>
 	</body>
