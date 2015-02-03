@@ -1,0 +1,5 @@
+[global]
+ApplicationName=g53ids
+DevToolsEndpoint=git.elasticbeanstalk.ap-southeast-1.amazonaws.com
+EnvironmentName=g53ids-env
+Region=ap-southeast-1
