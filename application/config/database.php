@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = 'aa1h1zomr7xslqd.csmp8yhb8dto.ap-southeast-1.rds.amazonaws.com:3306';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['password'] = 'rootroot';
+$db['default']['database'] = 'g53ids';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
