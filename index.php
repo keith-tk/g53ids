@@ -17,17 +17,6 @@ $sunday = '0';
 $latitude = '2.945219';
 $longitude = '101.874778';
 
-// $db = new DB_Functions(); 
-// //Store User into MySQL DB
-
-// $res = $db->storePOI($name,$type,$openTime,$closeTime,$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$latitude,$longitude);
-    
-//     if($res){ 
-//          echo "Insertion successful";
-//      }else{ 
-//          echo "Insertion failed";
-//     }
-
 $con = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if ($con->connect_errno)
   {
