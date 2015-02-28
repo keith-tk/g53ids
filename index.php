@@ -1,5 +1,5 @@
 <?php
-echo '<p>Hello World</p>';
+
 include_once './db_functions.php';
 //Create Object for DB_Functions clas
 
