@@ -1,17 +1,31 @@
-<html>
-	<head>
-		<title>PHP Test</title>
-	</head>
-	<body>
-	</body>
-	<?php echo '<p>Hello World</p>'?>
-	<?php echo "my first cloud app";
-	$link = mysql_connect('aa1h1zomr7xslqd.csmp8yhb8dto.ap-southeast-1.rds.amazonaws.com:3306', 'root', 'rootroot');
-	if (!$link) {
-	die('Could not connect: ' . mysql_error());
-	}
-	echo "<br>";
-	echo 'Connected successfully';
-	mysql_close($link); ?>
-	</body>
-</html>
+<?php
+
+include_once './db_functions.php';
+//Create Object for DB_Functions clas
+
+$name = "Secret Recipe";
+$type = "Restaurant";
+$contact = "+60123456789";
+$openTime = "00:09:30";
+$closeTime = "00:08:00";
+$monday = '1';
+$tuesday = '1';
+$wednesday = '1';
+$thursday = '1';
+$friday = '1';
+$saturday = '0';
+$sunday = '0';
+$latitude = '2.945219';
+$longitude = '101.874778';
+
+$db = new DB_Functions(); 
+//Store User into MySQL DB
+
+$res = $db->storePOI($name,$type,$openTime,$closeTime,$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$latitude,$longitude);
+    
+    if($res){ 
+         echo "Insertion successful";
+     }else{ 
+         echo "Insertion failed";
+    }
+?>
