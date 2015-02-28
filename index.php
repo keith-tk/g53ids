@@ -1,7 +1,6 @@
 <?php
 
-include_once './db_functions.php';
-//Create Object for DB_Functions clas
+include_once 'config.php';
 
 $name = "Secret Recipe";
 $type = "Restaurant";
@@ -18,14 +17,37 @@ $sunday = '0';
 $latitude = '2.945219';
 $longitude = '101.874778';
 
-$db = new DB_Functions(); 
-//Store User into MySQL DB
+// $db = new DB_Functions(); 
+// //Store User into MySQL DB
 
-$res = $db->storePOI($name,$type,$openTime,$closeTime,$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$latitude,$longitude);
+// $res = $db->storePOI($name,$type,$openTime,$closeTime,$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$latitude,$longitude);
     
-    if($res){ 
-         echo "Insertion successful";
-     }else{ 
-         echo "Insertion failed";
-    }
+//     if($res){ 
+//          echo "Insertion successful";
+//      }else{ 
+//          echo "Insertion failed";
+//     }
+
+$con = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+if ($con->connect_errno)
+  {
+  echo "Failed to connect to MySQL: " . $con->connect_error;
+  }
+
+
+
+$id = uniqid('', true);
+$insert_row = $con->query("INSERT INTO poi(Id, Name, Type, Contact, OpenTime, CloseTime, 
+										Monday, Tuesday, Wednesday, Thursday, Friday, 
+										Saturday, Sunday, Latitude, Longitude) 
+									VALUES ('$id', '$name', '$type', '$contact', '$openTime', '$closeTime', 
+										'$monday', '$tuesday', '$wednesday', '$thursday', '$friday',
+										 '$saturday', '$sunday', '$latitude', '$longitude')");
+
+if($insert_row){
+    print 'Success! ID of last inserted record is : ' .$con->insert_id .'<br />'; 
+}else{
+    die('Error : ('. $con->errno .') '. $con->error);
+}
+
 ?>
