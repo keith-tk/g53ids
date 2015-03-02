@@ -1,8 +1,6 @@
 <?php
 
-$date = $_POST["date"];
-
-if(!isset($date){
+if(!isset($_POST["date"])){
 	echo "Date received is null";
 }
 else{
