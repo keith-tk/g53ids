@@ -11,9 +11,8 @@ if(!isset($_POST["date"])){
 //Existing database, return newest records
 else{
 	$date = $_POST["date"];
-	echo $date;
-	// $database = new Retrieve_Functions();
-	// $database->getUnsyncedRecords($date);	
+	$database = new Retrieve_Functions();
+	$database->getUnsyncedRecords($date);	
 }
 
 ?>
