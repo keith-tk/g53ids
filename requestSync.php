@@ -1,7 +1,7 @@
 
 <?php
 
-$url = 'https://g53ids-env.elasticbeanstalk.com/syncDatabase.php';
+$url = 'g53ids-env.elasticbeanstalk.com/syncDatabase.php';
 $data = array('date' => '2015-02-07 08:24:37');
 
 // use key 'http' even if you send the request to https://...
