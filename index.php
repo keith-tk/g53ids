@@ -19,9 +19,9 @@ $sunday = '0';
 $latitude = '2.945219';
 $longitude = '101.874778';
 
-$database = new Insert_Functions();
-$database->addNewInsertion($name, $type, $contact, $openTime, $closeTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $latitude, $longitude);
+// $database = new Insert_Functions();
+// $database->addNewInsertion($name, $type, $contact, $openTime, $closeTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $latitude, $longitude);
 // $database = new Retrieve_Functions();
 // $database->getAllRecords();
-
+echo "Hello World";
 ?>
