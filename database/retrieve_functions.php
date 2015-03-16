@@ -29,6 +29,17 @@ class Retrieve_Functions extends Base_Function{
 		echo json_encode($rows, JSON_PRETTY_PRINT);
 		$result_row->free();
 	}
+
+	public function getComments($id){
+
+		$result_row = $this->con->query("SELECT Date, Text FROM comment WHERE Id = '$id'");
+		$rows = array();
+		while($r = mysqli_fetch_assoc($result_row)){
+			$rows[]=$r;
+		}
+		echo json_encode($rows, JSON_PRETTY_PRINT);
+		$result_row->free();
+	}
 }
 
 ?>

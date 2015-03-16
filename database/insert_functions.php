@@ -30,6 +30,19 @@ class Insert_Functions extends Base_Function{
 
 		$insert_row->free();
 	}
+
+	public function addNewComment($id, $text){
+		$date  = new DateTime();
+		$formatted_date = $date->format('Y-m-d H:i:s');
+		$insert_row = $this->con->query("INSERT INTO comment(Id, Date, Text) 
+									VALUES ('$id', '$formatted_date', '$text')");
+		if($insert_row){
+			echo "true";
+		}
+		else{
+			echo "false";
+		}
+	}
 }
 
 ?>
