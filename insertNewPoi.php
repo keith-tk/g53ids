@@ -19,7 +19,7 @@ $latitude = '2.945219';
 $longitude = '101.874778';
 
 if(!isset($_POST["name"]) || !isset($_POST["type"]) || !isset($_POST["contact"]) || !isset($_POST["openTime"]) || !isset($_POST["closeTime"]) || !isset($_POST["monday"]) || !isset($_POST["tuesday"]) || !isset($_POST["wednesday"]) || !isset($_POST["thursday"]) || !isset($_POST["friday"]) || !isset($_POST["saturday"]) || !isset($_POST["sunday"]) || !isset($_POST["latitude"]) || !isset($_POST["longitude"])){
-	echo "false";
+	echo "empty error";
 }
 
 else{
