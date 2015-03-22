@@ -30,7 +30,7 @@ class Insert_Functions extends Base_Function{
 			echo "false";
 		}
 
-		$insert_row->free();
+		// $insert_row->free();
 	}
 
 	public function addNewComment($id, $text){
