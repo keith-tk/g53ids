@@ -63,6 +63,9 @@ else if(!isset($_POST["latitude"])){
 }
 else if(!isset($_POST["longitude"])){
 	echo "longitude";
+}
+else{
+	echo "all is good";
 }  
 
 // else{
