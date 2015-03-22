@@ -18,75 +18,27 @@ include_once 'database/insert_functions.php';
 // $latitude = '2.945219';
 // $longitude = '101.874778';
 
-// if(!isset($_POST["name"]) || !isset($_POST["type"]) || !isset($_POST["contact"]) || !isset($_POST["openTime"]) || !isset($_POST["closeTime"]) || !isset($_POST["monday"]) || !isset($_POST["tuesday"]) || !isset($_POST["wednesday"]) || !isset($_POST["thursday"]) || !isset($_POST["friday"]) || !isset($_POST["saturday"]) || !isset($_POST["sunday"]) || !isset($_POST["latitude"]) || !isset($_POST["longitude"])){
-// 	echo "empty error";
-// }
-
-if(!isset($_POST["name"])){
-	echo "name";
-}
-else if( !isset($_POST["type"])){
-	echo "type";
-}
-else if(!isset($_POST["contact"])){
-	echo "contact";
-}
-else if(!isset($_POST["openTime"])){
-	echo "openTime";
-} 
-else if(!isset($_POST["closeTime"])){
-	echo "closeTime";
-} 
-else if(!isset($_POST["monday"])){
-	echo "monday";
-} 
-else if(!isset($_POST["tuesday"])){
-	echo "tuesday";
-} 
-else if(!isset($_POST["wednesday"])){
-	echo "wednesday";
-} 
-else if(!isset($_POST["thursday"])){
-	echo "thursday";
+if(!isset($_POST["name"]) || !isset($_POST["type"]) || !isset($_POST["contact"]) || !isset($_POST["openTime"]) || !isset($_POST["closeTime"]) || !isset($_POST["monday"]) || !isset($_POST["tuesday"]) || !isset($_POST["wednesday"]) || !isset($_POST["thursday"]) || !isset($_POST["friday"]) || !isset($_POST["saturday"]) || !isset($_POST["sunday"]) || !isset($_POST["latitude"]) || !isset($_POST["longitude"])){
+	echo "false";
 }  
-else if(!isset($_POST["friday"])){
-	echo "friday";	
-} 
-else if(!isset($_POST["saturday"])){
-	echo "saturday";
-} 
-else if(!isset($_POST["sunday"])){
-	echo "sunday";
-} 
-else if(!isset($_POST["latitude"])){
-	echo "latitude";
-}
-else if(!isset($_POST["longitude"])){
-	echo "longitude";
-}
 else{
-	echo "all is good";
-}  
+	$name = $_POST["name"];
+	$type = $_POST["type"];
+	$contact = $_POST["contact"];
+	$openTime = $_POST["openTime"];
+	$closeTime = $_POST["closeTime"];
+	$monday = $_POST["monday"];
+	$tuesday = $_POST["tuesday"];
+	$wednesday = $_POST["wednesday"];
+	$thursday = $_POST["thursday"];
+	$friday = $_POST["friday"];
+	$saturday = $_POST["saturday"];
+	$sunday = $_POST["sunday"];
+	$latitude = $_POST["latitude"];
+	$longitude = $_POST["longitude"];
 
-// else{
-// 	$name = $_POST["name"];
-// 	$type = $_POST["type"];
-// 	$contact = $_POST["contact"];
-// 	$openTime = $_POST["openTime"];
-// 	$closeTime = $_POST["closeTime"];
-// 	$monday = $_POST["monday"];
-// 	$tuesday = $_POST["tuesday"];
-// 	$wednesday = $_POST["wednesday"];
-// 	$thursday = $_POST["thursday"];
-// 	$friday = $_POST["friday"];
-// 	$saturday = $_POST["saturday"];
-// 	$sunday = $_POST["sunday"];
-// 	$latitude = $_POST["latitude"];
-// 	$longitude = $_POST["longitude"];
-
-// 	$database = new Insert_Functions();
-// 	$database->addNewInsertion($name, $type, $contact, $openTime, $closeTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $latitude, $longitude);
-
-// }
+	$database = new Insert_Functions();
+	$database->addNewInsertion($name, $type, $contact, $openTime, $closeTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $latitude, $longitude);
+}
 
 ?>

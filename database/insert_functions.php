@@ -14,13 +14,11 @@ class Insert_Functions extends Base_Function{
 										'$monday', '$tuesday', '$wednesday', '$thursday', '$friday',
 										 '$saturday', '$sunday', '$latitude', '$longitude', '$formatted_date')");
 
-		if($insert_row){
+		// if($insert_row){
 		    // print 'Success! ID of last inserted record is : ' .$this->con->insert_id .'<br />'; 			
-			echo "poi table fine";
-		}else{
+		// }else{
 		    // die('Error : ('. $this->con->errno .') '. $this->con->error.'<br />');			
-			echo "poi table error";
-		}
+		// }
 
 		$insert_row = $this->con->query("INSERT INTO log(Id) VALUES ('$id')");
 
