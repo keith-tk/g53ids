@@ -14,18 +14,20 @@ class Insert_Functions extends Base_Function{
 										'$monday', '$tuesday', '$wednesday', '$thursday', '$friday',
 										 '$saturday', '$sunday', '$latitude', '$longitude', '$formatted_date')");
 
-		if($insert_row){
-		    print 'Success! ID of last inserted record is : ' .$this->con->insert_id .'<br />'; 
-		}else{
-		    die('Error : ('. $this->con->errno .') '. $this->con->error.'<br />');
-		}
+		// if($insert_row){
+		    // print 'Success! ID of last inserted record is : ' .$this->con->insert_id .'<br />'; 			
+		// }else{
+		    // die('Error : ('. $this->con->errno .') '. $this->con->error.'<br />');			
+		// }
 
 		$insert_row = $this->con->query("INSERT INTO log(Id) VALUES ('$id')");
 
 		if($insert_row){
-			print 'Success! ID of last inserted record is : ' .$this->con->insert_id .'<br />'; 
+			// print 'Success! ID of last inserted record is : ' .$this->con->insert_id .'<br />'; 
+			echo "true";
 		}else{
-		    die('Error : ('. $this->con->errno .') '. $this->con->error.'<br />');
+		    // die('Error : ('. $this->con->errno .') '. $this->con->error.'<br />');
+			echo "false";
 		}
 
 		$insert_row->free();
