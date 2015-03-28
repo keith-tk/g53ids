@@ -65,7 +65,7 @@ class Retrieve_Functions extends Base_Function{
 
 	public function getUnsyncedTags($lastSyncDate){
 
-		$result_row = $this->con->query("SELECT Id, Poi, Tag, Flag FROM tag WHERE LastUpdated > '$lastSyncDate'"); 
+		$result_row = $this->con->query("SELECT Id, Name, Poi, Flag FROM tag WHERE LastUpdated > '$lastSyncDate'"); 
 
 		$rows = array();
 		while($r = mysqli_fetch_assoc($result_row)){
