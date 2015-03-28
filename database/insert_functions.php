@@ -45,6 +45,21 @@ class Insert_Functions extends Base_Function{
 			echo "false";
 		}
 	}
+
+	public function addNewTag($poi, $tag){
+		$id = uniqid();
+		$date  = new DateTime();
+		$formatted_date = $date->format('Y-m-d H:i:s');
+		$insert_row = $this->con->query("INSERT INTO tag(Id, Name, Poi, LastUpdated) 
+									VALUES ('$id', '$tag', '$poi', '$formatted_date')");
+		if($insert_row){
+			echo "true";
+		}
+		else{
+			echo "false";
+			// die('Error : ('. $this->con->errno .') '. $this->con->error.'<br />');
+		}
+	}
 }
 
 ?>
