@@ -10,6 +10,6 @@ else{
 	$poi = $_POST["poi"];
 	$tag = $_POST["tag"];
 	$database = new Insert_Functions();
-	$database->addNewComment($poi, $tag);
+	$database->addNewTag($poi, $tag);
 }
 ?>
