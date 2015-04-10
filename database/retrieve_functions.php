@@ -32,7 +32,7 @@ class Retrieve_Functions extends Base_Function{
 
 	public function getComments($id){
 
-		$result_row = $this->con->query("SELECT Date, Text FROM comment WHERE Id = '$id'");
+		$result_row = $this->con->query("SELECT CONVERT_TZ(Date,'+00:00','+08:00'), Text FROM comment WHERE Id = '$id'");
 		$rows = array();
 		while($r = mysqli_fetch_assoc($result_row)){
 			$rows[]=$r;
