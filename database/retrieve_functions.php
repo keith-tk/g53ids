@@ -32,7 +32,7 @@ class Retrieve_Functions extends Base_Function{
 
 	public function getComments($id){
 
-		$result_row = $this->con->query("SELECT CONVERT_TZ(Date,'+00:00','+08:00') AS Date, Text FROM comment WHERE Id = '$id'");
+		$result_row = $this->con->query("SELECT CONVERT_TZ(Date,'+00:00','+08:00') AS Date, Text FROM comment WHERE Id = '$id' ORDER BY Date DESC");
 		$rows = array();
 		while($r = mysqli_fetch_assoc($result_row)){
 			$rows[]=$r;
@@ -73,6 +73,18 @@ class Retrieve_Functions extends Base_Function{
 		}
 		echo json_encode($rows, JSON_PRETTY_PRINT);
 		// $result_row->free();
+	}
+
+	public function getNearbyLocations($lat,$lon){
+		$result_row = $this->con->query(" SELECT *, ( ((ACOS(SIN($lat * PI() / 180) * SIN(Latitude * PI() / 180) 
+			+ COS($lat * PI() / 180) * COS(Latitude * PI() / 180) * COS(($lon - Longitude) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) ) * 1.60934
+			AS distance FROM poi HAVING Status = 0 AND distance<='0.5' ORDER BY distance ASC LIMIT 0,1");
+
+		$rows = array();
+		while($r = mysqli_fetch_assoc($result_row)){
+			$rows[]=$r;
+		}
+		echo json_encode($rows, JSON_PRETTY_PRINT);
 	}
 }
 
