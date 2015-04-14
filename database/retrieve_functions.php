@@ -6,7 +6,7 @@ class Retrieve_Functions extends Base_Function{
 				
 		$result_row = $this->con->query("SELECT Id, Name, Type, Rating, Contact, OpenTime, CloseTime, 
 										Monday, Tuesday, Wednesday, Thursday, Friday, 
-										Saturday, Sunday, Latitude, Longitude, Status FROM poi"); 
+										Saturday, Sunday, Latitude, Longitude, Status FROM poi WHERE Status = 1 OR Status = 2"); 
 		
 		$rows = array();
 		while($r = mysqli_fetch_assoc($result_row)){
@@ -20,7 +20,8 @@ class Retrieve_Functions extends Base_Function{
 
 		$result_row = $this->con->query("SELECT Id, Name, Type, Rating, Contact, OpenTime, CloseTime, 
 										Monday, Tuesday, Wednesday, Thursday, Friday, 
-										Saturday, Sunday, Latitude, Longitude, Status FROM poi WHERE LastUpdated > '$lastSyncDate'"); 
+										Saturday, Sunday, Latitude, Longitude, Status FROM poi
+										 WHERE LastUpdated > '$lastSyncDate' AND Status = 1 OR Status = 2"); 
 
 		$rows = array();
 		while($r = mysqli_fetch_assoc($result_row)){
@@ -32,7 +33,7 @@ class Retrieve_Functions extends Base_Function{
 
 	public function getComments($id){
 
-		$result_row = $this->con->query("SELECT CONVERT_TZ(Date,'+00:00','+08:00') AS Date, Text FROM comment WHERE Id = '$id' ORDER BY Date DESC");
+		$result_row = $this->con->query("SELECT CONVERT_TZ(Date,'+00:00','+08:00') AS Date, Text FROM comment WHERE Id = '$id' ORDER BY Date DESC LIMIT 15");
 		$rows = array();
 		while($r = mysqli_fetch_assoc($result_row)){
 			$rows[]=$r;
@@ -79,6 +80,18 @@ class Retrieve_Functions extends Base_Function{
 		$result_row = $this->con->query(" SELECT *, ( ((ACOS(SIN($lat * PI() / 180) * SIN(Latitude * PI() / 180) 
 			+ COS($lat * PI() / 180) * COS(Latitude * PI() / 180) * COS(($lon - Longitude) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) ) * 1.60934
 			AS distance FROM poi HAVING Status = 0 AND distance<='0.5' ORDER BY distance ASC LIMIT 0,1");
+
+		$rows = array();
+		while($r = mysqli_fetch_assoc($result_row)){
+			$rows[]=$r;
+		}
+		echo json_encode($rows, JSON_PRETTY_PRINT);
+	}
+
+	public function getSimilarLocations($type, $lat, $lon){
+		$result_row = $this->con->query(" SELECT *, ( ((ACOS(SIN($lat * PI() / 180) * SIN(Latitude * PI() / 180) 
+			+ COS($lat * PI() / 180) * COS(Latitude * PI() / 180) * COS(($lon - Longitude) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) ) * 1.60934
+			AS distance FROM poi HAVING Type = '$type' AND Status = 2 OR Status = 0 AND distance<='0.2' ORDER BY distance ASC");
 
 		$rows = array();
 		while($r = mysqli_fetch_assoc($result_row)){
